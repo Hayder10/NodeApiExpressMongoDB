@@ -2,10 +2,12 @@
 //in the controllers folder!, that way the app is scalable and organized!
 
 const express = require('express')
-const postController = require('../controllers/post')
+const { getPosts , createPost } = require('../controllers/post') // controller importation
+const validator = require('../validator') //  validator importation
 //ROUTER
 const router = express.Router()
 
-router.get('/', postController.getPosts)
+router.get('/', getPosts)
+router.post('/post', validator.createPostValidator, createPost)
 
 module.exports = router ;
